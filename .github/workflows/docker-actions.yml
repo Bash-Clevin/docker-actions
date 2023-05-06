@@ -1,0 +1,31 @@
+name: Create and publish Docker image
+
+on:
+  push:
+    branches:
+      - main
+    # paths:
+    #   - ""
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-actionv@v2
+
+      - name: Login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - name: Build
+        run: docker build . --file Dockerfile --tag github/image-test:$(date +%s)
+
+      - name: Push
+        run: docker push ${{secrets.DOCKER_USER}}/github
