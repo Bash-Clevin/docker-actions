@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - ""
+    paths:
+      - "/Bash-Clevin/selfhosted-runner"
 jobs:
   build:
     runs-on: ubuntu-latest
