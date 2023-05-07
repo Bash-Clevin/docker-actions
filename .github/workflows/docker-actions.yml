@@ -5,7 +5,12 @@ on:
     branches:
       - main
     paths:
-      - "/Bash-Clevin/selfhosted-runner"
+      - "Bash-Clevin/selfhosted-runner"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "Bash-Clevin/selfhosted-runner"
 jobs:
   build:
     runs-on: ubuntu-latest
