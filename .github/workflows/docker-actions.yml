@@ -25,7 +25,7 @@ jobs:
 
       - name: Build
         env:
-          TERRGRUNT_VERSION: ${{vars.TERRGRUNT_VERSION}}
+          TERRAGRUNT_VERSION: ${{vars.TERRAGRUNT_VERSION}}
           DOCKER_USER: ${{secrets.DOCKER_USER}}
         run: docker build --build-arg version=$TERRAGRUNT_VERSION . --file ci/files/Dockerfile --tag $DOCKER_USER/selfhosted-runner:latest
 
